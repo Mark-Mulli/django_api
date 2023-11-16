@@ -1,2 +1,2 @@
 # django_api
-## Implementing Django APIs
+## Implementing RESTful Django APIs
