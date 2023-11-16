@@ -25,5 +25,6 @@ urlpatterns = [
     path('api/artists/<int:pk>',views.api_single_artists, name='api_artists'),
     path('api/artists/<int:pk>/delete',views.api_delete_artists, name='api_delete_artists'),
     path('api/artists/<int:pk>/update',views.api_update_artists, name='api_update_artists'),
+    path('api/artists/<int:pk>/albums', views.api_albums_artists, name='api_albums_artists'),
     path('admin/', admin.site.urls),
 ]

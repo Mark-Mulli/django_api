@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from main_app.models import Artist, Song
-from main_app.serializers import ArtistSerializer
+from main_app.serializers import ArtistSerializer, AlbumSerializer
 
 
 # Create your views here.
@@ -89,3 +89,13 @@ def api_update_artists(request,pk):
     except:
         return Response({"Error":"Artist by this id does not exist"},status=404)
     return None
+
+
+def api_albums_artists(request,pk):
+    try:
+        art = Artist.objects.get(pk=pk)
+        alb = art.album_set.all()
+        serializer = AlbumSerializer(instance=alb, many=True)
+        return Response(serializer.data)
+    except:
+        return Response({"error":"Does not exist"},status=404)
